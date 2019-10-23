@@ -11,7 +11,7 @@ class TeamsListContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props);
+   // console.log(this.props);
     return (
       <div>
         <TeamsList teams={this.props.teams} />
@@ -26,7 +26,7 @@ class TeamsListContainer extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state); // check what the state is
+  //console.log(state); // check what the state is
   return {
     teams: state.teams, // check react devtools, if the component has props.teams
     loggedIn: state.auth !== null

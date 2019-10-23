@@ -1,4 +1,5 @@
 import React from "react";
+import CreatePlayerFormContainer from './CreatePlayerFormContainer'
 
 function TeamDetails(props) {
   if (!props.team.name) return "Loading";
@@ -15,6 +16,7 @@ function TeamDetails(props) {
           );
         })}
       </ul>
+      <CreatePlayerFormContainer/>
     </div>
   );
 }
