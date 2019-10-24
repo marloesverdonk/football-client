@@ -7,7 +7,7 @@ function TeamDetails(props) {
   return (
     <div>
       {props.team.name}
-      <ul>
+      {/* <ul>
         {props.team.players.map(player => {
           return (
             <li>
@@ -15,7 +15,7 @@ function TeamDetails(props) {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
       <CreatePlayerFormContainer/>
     </div>
   );

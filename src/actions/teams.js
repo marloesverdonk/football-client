@@ -42,7 +42,6 @@ const teamCreateSuccess = team => ({
 
 export const createTeam = data => (dispatch, getState) => {
   const token = getState().auth;
-
   request
     .post(`${baseUrl}/teams`)
     .set("Authorization", `Bearer ${token}`)
@@ -61,9 +60,49 @@ const fetchTeamSuccess = team => ({
 });
 
 export const loadTeam = id => (dispatch, getState) => {
-  console.log("CAN WE GET THE STATE??", getState());
+ // console.log("CAN WE GET THE STATE??", getState());
   request(`${baseUrl}/teams/${id}`).then(response => {
-    console.log(response);
+   // console.log(response);
     dispatch(fetchTeamSuccess(response.body));
   });
 };
+
+//Delete team
+
+export const TEAM_DELETE_SUCCESS = 'TEAM_DELETE_SUCCES'
+
+const teamDeleteSuccess = teamId => ({
+  type: TEAM_DELETE_SUCCESS,
+  teamId
+})
+
+export const deleteTeam = (id) => dispatch => {
+  //console.log(id)
+  request
+    .delete(`${baseUrl}/teams/${id}`)
+    .send(id)
+    .then(() => {
+      dispatch(teamDeleteSuccess(id))
+    })
+    .catch(console.error)
+}
+
+//Update team
+
+export const TEAM_UPDATE_SUCCESS = 'TEAM_UPDATE_SUCCESS'
+
+
+const teamUpdateSuccess = (team) => ({
+  type: TEAM_UPDATE_SUCCESS,
+  team
+})
+
+export const updateTeam = (id, name) => dispatch => {
+  request
+    .put(`${baseUrl}/teams/${id}`)
+    .send({name : name})
+    .then(response => {
+     dispatch(teamUpdateSuccess(response.body))
+    })
+    .catch(console.error)
+}

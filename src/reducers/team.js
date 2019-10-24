@@ -1,5 +1,6 @@
 import { FETCH_TEAM_SUCCESS } from "../actions/teams";
 import { PLAYER_CREATE_SUCCESS } from "../actions/players"
+import { TEAM_UPDATE_SUCCESS } from "../actions/teams"
 
 export default (state = {}, action = {}) => {
   switch (action.type) {
@@ -7,9 +8,9 @@ export default (state = {}, action = {}) => {
       return { ...action.payload };
     case PLAYER_CREATE_SUCCESS:
       return { ...state, players: [...state.players, action.payload] }
-    case "DELETE_TEAM":
-      return {};
-
+     case TEAM_UPDATE_SUCCESS:
+        return action.team
+    
     default:
       return state;
   }

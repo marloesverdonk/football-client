@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { createTeam } from "../actions/teams";
+import { createTeam, updateTeam } from "../actions/teams";
 import TeamForm from "./TeamForm";
 
 class CreateTeamFormContainer extends React.Component {
@@ -35,5 +35,5 @@ class CreateTeamFormContainer extends React.Component {
 
 export default connect(
   null,
-  { createTeam }
+  { createTeam, updateTeam }
 )(CreateTeamFormContainer);
